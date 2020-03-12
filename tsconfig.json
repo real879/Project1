@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "./build",
+        "module": "commonjs",
+        "sourceMap": true,
+        "esModuleInterop": true,
+    },
+    "include": ["./src/**/*.ts[x]"], 
+}
