@@ -4,6 +4,8 @@
         "module": "commonjs",
         "sourceMap": true,
         "esModuleInterop": true,
+        "jsx": "react",
+        "target": "ES2016",
     },
-    "include": ["./src/**/*.ts[x]"], 
+    "include": ["./src/**/*"] 
 }

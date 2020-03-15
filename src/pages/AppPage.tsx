@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import {AppProps} from '../store/GeneralStore/types';
+import {AppProps} from '../store/types';
 import{rootStore} from '../store/index';
 
 
