@@ -7,4 +7,5 @@ if (typeof window !== 'undefined'){
         <App title="Project1" version={0.1} />,
         document.getElementById("app")
     );
+    
 }
