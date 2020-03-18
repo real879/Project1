@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { App } from './pages/AppPage';
+import { App } from './App';
 
 if (typeof window !== 'undefined'){
     ReactDOM.render(
