@@ -1,32 +1,33 @@
-import{GENERAL_CREATED,GENERAL_SHOWING,GENERAL_RESET,GENERAL_ERROR, GeneralActionType, GeneralStateName} from "./types";
+import { GENERAL_CREATED, GENERAL_SHOWING, GENERAL_RESET, GENERAL_ERROR,
+    GeneralActionType, GeneralStateName} from "./types";
 import { AppError } from "../types";
 
-export function generalCreate():GeneralActionType{
+export function generalCreate():GeneralActionType {
     return {
-        type:GENERAL_CREATED,
-        state: GeneralStateName.CREATED
+        type  : GENERAL_CREATED,
+        state : GeneralStateName.CREATED
     }
 }
 
-export function generalShow():GeneralActionType{
+export function generalShow():GeneralActionType {
     return {
-        type:GENERAL_SHOWING,
-        state: GeneralStateName.SHOWING
+        type  : GENERAL_SHOWING,
+        state : GeneralStateName.SHOWING
     }
 }
 
-export function generalReset():GeneralActionType{
+export function generalReset():GeneralActionType {
     return {
-        type:GENERAL_RESET,
-        state: GeneralStateName.RESET
+        type  : GENERAL_RESET,
+        state : GeneralStateName.RESET
     }
 }
 
-export function generalError(error:AppError):GeneralActionType{
+export function generalError(error:AppError):GeneralActionType {
     return {
-        type:GENERAL_ERROR,
-        state: GeneralStateName.ERROR,
-        error:error
+        type  : GENERAL_ERROR,
+        state : GeneralStateName.ERROR,
+        error : error
     }
 }
 

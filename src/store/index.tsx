@@ -2,18 +2,17 @@ import { createStore, applyMiddleware, Store, combineReducers, Reducer } from 'r
 import thunk from 'redux-thunk';
 import { logger } from "redux-logger";
 import { composeWithDevTools } from 'redux-devtools-extension';
-import{AppState} from './types';
+
+import { AppState } from './types';
 import { generalReducer } from './GeneralStore/reducers';
 
 const rootReducer: Reducer<AppState> = combineReducers<AppState>({
-    general:generalReducer
+    general : generalReducer
 });
 
 export const rootStore : Store<AppState> = (
     createStore<AppState, any, any, any>(
-        rootReducer,{},
+        rootReducer, {},
         composeWithDevTools(applyMiddleware(logger, thunk))
     )
-
-
 );
