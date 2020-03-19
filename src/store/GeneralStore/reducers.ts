@@ -22,7 +22,7 @@ export function generalReducer(
                 state: GeneralStateName.SHOWING
             }
         case GeneralActionName.RESET:
-            return {...state,
+            return {...initialState,
                 state: GeneralStateName.RESET
             }
         case GeneralActionName.ERROR:

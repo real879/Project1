@@ -24,6 +24,10 @@ export class GeneralPage extends React.Component<Props, State>{
         this.state = initialState;
     }
     render(){
+        const errorDiv = (this.props.error != null)?
+        (<div>
+            {this.props.error.action}-{this.props.error.msg}
+        </div>):null;
         return (<div>
             <div>Hello World!</div>
             <hr/>
@@ -40,6 +44,8 @@ export class GeneralPage extends React.Component<Props, State>{
             <button onClick={() => {
                 this.props.errorAction(this.state.msg)
             }}>New Error!</button>
+            <br/>
+            {errorDiv}
         </div>);
     }
 }
