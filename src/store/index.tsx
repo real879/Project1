@@ -6,13 +6,22 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { AppState } from './types';
 import { generalReducer } from './GeneralStore/reducers';
 
-const rootReducer: Reducer<AppState> = combineReducers<AppState>({
+//REDUCER
+const rootReducer : Reducer<AppState> = combineReducers<AppState>({
     general : generalReducer
 });
 
-export const rootStore : Store<AppState> = (
-    createStore<AppState, any, any, any>(
-        rootReducer, {},
-        composeWithDevTools(applyMiddleware(logger, thunk))
-    )
+//STATE
+const preloadedState : AppState = {};
+
+//MIDDLEWARE
+const middleware = composeWithDevTools(applyMiddleware(
+    logger, thunk
+));
+
+//STORE
+export const rootStore : Store<AppState> =  createStore<AppState, any, any, any>(
+    rootReducer,
+    preloadedState,
+    middleware
 );

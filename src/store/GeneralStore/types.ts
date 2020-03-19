@@ -1,35 +1,39 @@
-import {AppError} from "../types"
-export enum GeneralStateName{
-    CREATED,
-    SHOWING,
-    RESET,
-    ERROR
+import { AppError } from "../types"
+
+//STATE
+export enum GeneralStateName {
+    CREATED = "GENERAL_CREATED",
+    SHOWING = "GENERAL_SHOWING",
+    RESET   = "GENERAL_RESET",
+    ERROR   = "GENERAL_ERROR"
 }
-export interface GeneralState{
-    state : GeneralStateName
+export interface GeneralState {
+    state  : GeneralStateName
     error?: AppError
 }
-export const GENERAL_CREATED = "GENERAL_CREATED";
-export const GENERAL_SHOWING = "GENERAL_SHOWING";
-export const GENERAL_RESET = "GENERAL_RESET";
-export const GENERAL_ERROR = "GENERAL_ERROR";
 
-interface General_CreatedAction{
-    type  : typeof GENERAL_CREATED
-    state : GeneralStateName.CREATED 
+//ACTIONS
+export enum GeneralActionName{
+    CREATE = "GENERAL_CREATE",
+    SHOW   = "GENERAL_SHOW",
+    RESET  = "GENERAL_RESET",
+    ERROR  = "GENERAL_ERROR"
 }
-interface General_ShowingAction{
-    type  : typeof GENERAL_SHOWING
-    state : GeneralStateName.SHOWING 
+export interface GeneralCreateAction {
+    type : GeneralActionName.CREATE
 }
-interface General_ResetAction{
-    type  : typeof GENERAL_RESET
-    state : GeneralStateName.RESET 
+export interface GeneralShowAction {
+    type : GeneralActionName.SHOW
 }
-interface General_ErrorAction{
-    type  : typeof GENERAL_ERROR
-    state : GeneralStateName.ERROR 
+export interface GeneralResetAction {
+    type : GeneralActionName.RESET 
+}
+export interface GeneralErrorAction {
+    type  : GeneralActionName.ERROR 
     error : AppError
 }
-
-export type GeneralActionType=General_CreatedAction |General_ShowingAction |General_ResetAction |General_ErrorAction;
+export type GeneralAction = 
+    | GeneralCreateAction
+    | GeneralShowAction
+    | GeneralResetAction
+    | GeneralErrorAction;

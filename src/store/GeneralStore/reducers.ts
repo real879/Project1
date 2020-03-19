@@ -1,40 +1,36 @@
-import { GeneralState, GeneralStateName, GeneralActionType, GENERAL_CREATED, GENERAL_ERROR, GENERAL_SHOWING, GENERAL_RESET } from "./types";
+import {
+    GeneralState,  GeneralStateName,
+    GeneralAction, GeneralActionName
+} from "./types";
 
-const initialState: GeneralState={
+const initialState : GeneralState = {
     state : GeneralStateName.CREATED,
     error : null
-}
+};
 
-export function generalReducer(state=initialState,action:GeneralActionType):GeneralState{
-    switch (action.type) {
-        case GENERAL_CREATED:
+export function generalReducer(
+    state  : GeneralState = initialState,
+    action : GeneralAction
+) : GeneralState {
+    switch (action.type){
+        case GeneralActionName.CREATE:
             return {...state,
-                state : GeneralStateName.CREATED
+                state: GeneralStateName.CREATED
             }
-        case GENERAL_SHOWING:
+        case GeneralActionName.SHOW:
             return {...state,
-                state : GeneralStateName.SHOWING
+                state: GeneralStateName.SHOWING
             }
-        case GENERAL_RESET:
+        case GeneralActionName.RESET:
             return {...state,
-                state : GeneralStateName.RESET
+                state: GeneralStateName.RESET
             }
-        case GENERAL_ERROR:
-            return{...state,
-                state : GeneralStateName.ERROR,
-                error : action.error
+        case GeneralActionName.ERROR:
+            return {...state,
+                state: GeneralStateName.ERROR,
+                error: action.error
             }
         default:
             return state;
     }
 }
-
-
-
-
-
-
-
-
-
-
