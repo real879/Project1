@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Router, Route, Switch } from 'react-router';
+import { createBrowserHistory } from 'history';
 
 import { AppState, AppError } from '../store/types';
 import { GeneralStateName } from '../store/GeneralStore/types';
 import { generalShow, generalError } from '../store/GeneralStore/actions';
 
+import { NavigationBar } from '../components/Navbar'
+import ServantListPage from './ServantListPage'
+
 interface Props {
-    state ?: GeneralStateName
-    error ?: AppError
+    state       ?: GeneralStateName
+    error       ?: AppError
     showAction  ?: () => void
     errorAction ?: (msg : string) => void
 }
@@ -18,34 +23,26 @@ const initialState:State = {
     msg : ''
 }
 
+const history = createBrowserHistory()
+
 export class GeneralPage extends React.Component<Props, State>{
     constructor(props : Props){
         super(props);
         this.state = initialState;
     }
     render(){
-        const errorDiv = (this.props.error != null)?
-        (<div>
-            {this.props.error.action}-{this.props.error.msg}
-        </div>):null;
         return (<div>
-            <div>Hello World!</div>
-            <hr/>
-            <div>{this.props.state}</div>
-            <button onClick={this.props.showAction}>Show Action!</button>
-            <hr/>
-            <input
-                type="text"
-                value={this.state.msg}
-                onChange={(e : any) => {
-                    this.setState({ msg: e.target.value })
+            <NavigationBar
+                imgUrl="https://vignette.wikia.nocookie.net/fategrandorder/images/8/89/Wiki-wordmark.png/revision/latest?cb=20190613184911"
+                brandFunc={()=>{
+                    alert("Secret lol :V")
                 }}
             />
-            <button onClick={() => {
-                this.props.errorAction(this.state.msg)
-            }}>New Error!</button>
-            <br/>
-            {errorDiv}
+            <Router history={history}>
+                <Switch>
+                    <Route exact path='/' component={ServantListPage}/>
+                </Switch>
+            </Router>
         </div>);
     }
 }
@@ -54,12 +51,12 @@ const mapStateToProps = (state : AppState, ownProps : any) => ({
     state : state.general.state,
     error : state.general.error
 });
-
 const mapDispatchToProps = (dispatch : any) => ({
-    showAction  : () => { dispatch(generalShow()); },
+    showAction  : () => {
+        dispatch(generalShow());
+    },
     errorAction : (msg : string) => {
         dispatch(generalError({ action: 'test', msg }));
     }
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(GeneralPage);
